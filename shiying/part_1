@@ -82,3 +82,45 @@ int main()
 //Drived::Fubtest1()  
 //Base::Funtest2()		//因为基类此方法为声明为虚方法，所以派生类调用时候调用的是基类的方法
 
+//继承
+//https://www.cnblogs.com/longcnblogs/archive/2017/10/09/7642951.html
+
+#include "pch.h"
+#include <iostream>
+
+using namespace std;
+class Base
+{
+public:
+	void fun0() { cout << "base" << endl; }
+	int base = 1;
+};
+class Base1
+{
+public:
+	void fun2() { cout << "base" << endl; }
+	int base1 = 3;
+};
+class Derive :public Base
+{
+public:
+	void fun1() { cout << "base1" << endl; }
+	int derive = 2;
+};
+
+class Derive2 :public Base,public Base1
+{
+public:
+	void fun1() { cout << "base1" << endl; }
+	int derive = 2;
+};
+
+int main()
+{
+	Derive d;
+	Derive2 d2;
+	int _result = d.base + d.derive;
+	int _result2 = d2.base + d2.derive+d2.base1;
+	cout << _result << endl;
+	cout << _result2 << endl;
+}
