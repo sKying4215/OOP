@@ -13,6 +13,9 @@
 //6：抽象类是指包括至少一个纯虚函数的类。
 //
 //纯虚函数 : virtual void fun() = 0; 即抽象类！必须在子类实现这个函数，即先有名称，没有内容，在派生类实现内容。
+
+
+//js 语法中不需要声明virtual也可以实现继承
 #include "pch.h"
 #include <iostream>
 using namespace std;
