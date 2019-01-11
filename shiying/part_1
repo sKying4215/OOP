@@ -83,6 +83,7 @@ int main()
 //Base::Funtest2()		//因为基类此方法为声明为虚方法，所以派生类调用时候调用的是基类的方法
 
 //继承
+//  C++ 允许多继承  JS不允许多继承
 //https://www.cnblogs.com/longcnblogs/archive/2017/10/09/7642951.html
 
 #include "pch.h"
@@ -124,3 +125,22 @@ int main()
 	cout << _result << endl;
 	cout << _result2 << endl;
 }
+
+//JS 使用call 函数可以模拟出“假”的多继承
+function Person(name){
+	this.name = name;
+}
+ 
+Person.prototype.say = function(){
+	console.log(this.name);
+}
+ 
+var p = new Person("KD");
+p.say();
+ 
+var obj = {}
+Object.setPrototypeOf(obj,Person.prototype)//obj.__proto__=Person.prototype
+Person.call(obj,"KD");
+obj.say()
+console.log(obj instanceof Person)//true
+
