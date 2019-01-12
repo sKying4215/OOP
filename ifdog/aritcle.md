@@ -4,6 +4,7 @@
         ```C
             #include <Iostream>
             using namespace std;
+            
             class TestClass
             {
                 public:
@@ -19,28 +20,35 @@
                 cout<<"TestClass constructor"<<endl;
             }
             
-            TestClass::~TestClass()      //析构函数在RAII等技巧中广泛使用,而在Java中没有这个概念，C#中虽然有但通常并不建议使用
-            {
+            TestClass::~TestClass()      //析构函数在RAII等技巧中广泛使用
+            {                            //而在Java中没有这个概念，C#中虽有但通常并不建议使用
                 cout<<"TestClass destructor"<<endl;
             }
             
             void setnum(TestClass &t,int n)
             {
-                t.num=n;                 //私有成员数据赋值
+                t.num=n;                 //“友元”特性使一个外部方法给私有成员数据赋值
             }
             
             TestClass Ts;                //存在class之外的global数据
             int main()                   //main函数不在任何class内
             {
                 setnum(Ts,100);          //“友元”的概念打破了传统的封装
+                std::setnum(Ts,250);     //::标识符用于访问class之外的方法
                 return 0;
             }
         ```
-    - 无基本类型/对象类型之分
-    - 析构函数在RAII等技巧中广泛使用,而在Java中没有这个概念，C#中虽然有但通常并不建议使用
 - 封装
     - 字段无默认初始化，初始值不定
-    - 可为class声明友元，友元可访问class的私有数据，类似ACL的感觉
+    ```C
+    char revBuf[100];
+    printf("%s", revBuf);
+    ```
+    ↓↓↓↓↓↓↓↓↓↓↓↓
+    ```
+    烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫....
+    ```
+    - 可为class声明友元，友元可访问class的私有数据
     - ::标识符用于访问class之外的方法
 - 多态
     - 方法和大部分操作符都可重载
