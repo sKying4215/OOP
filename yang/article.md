@@ -38,23 +38,23 @@
       
       
        //定义Student类私有数据成员m_strName  
-      private:  
-         string m_strName;   
-      };   
-  
-      int main()   
-      {   
-           // 使用new关键字，实例化对象  
-           Student *str = new Student;  
-           // 设置对象的数据成员  
-           str->setName("cpp");  
-           // 使用cout打印对象str的数据成员  
-           cout << str->getName() << endl;  
-           // 将对象str的内存释放，并将其置空  
-           delete str;  
-           str = NULL;  
-           return 0;  
-      }  
+         private:  
+            string m_strName;   
+         };   
+
+         int main()   
+         {   
+              // 使用new关键字，实例化对象  
+              Student *str = new Student;  
+              // 设置对象的数据成员  
+              str->setName("cpp");  
+              // 使用cout打印对象str的数据成员  
+              cout << str->getName() << endl;  
+              // 将对象str的内存释放，并将其置空  
+              delete str;  
+              str = NULL;  
+              return 0;  
+         }   
    ```
    栈区，存储变量。  
 
@@ -83,49 +83,49 @@
         //////////////////////////////////////////////////////////////////////////
         class A       //父类
         {
-        private:
-            int privatedateA;
-        protected:
-            int protecteddateA;
-        public:
-            int publicdateA;
-        };
+           private:
+               int privatedateA;
+           protected:
+               int protecteddateA;
+           public:
+               int publicdateA;
+         };
         //////////////////////////////////////////////////////////////////////////
         class B :public A      //基类A的派生类B（共有继承）
         {
-        public:
-            void funct()
-            {
-                int b;
-                b=privatedateA;   //error：基类中私有成员在派生类中是不可见的
-                b=protecteddateA; //ok：基类的保护成员在派生类中为保护成员
-                b=publicdateA;    //ok：基类的公共成员在派生类中为公共成员
-            }
+           public:
+               void funct()
+               {
+                   int b;
+                   b=privatedateA;   //error：基类中私有成员在派生类中是不可见的
+                   b=protecteddateA; //ok：基类的保护成员在派生类中为保护成员
+                   b=publicdateA;    //ok：基类的公共成员在派生类中为公共成员
+               }
         };
         //////////////////////////////////////////////////////////////////////////
         class C :private A  //基类A的派生类C（私有继承）
         {
-                public:
-                    void funct()
-                    {
+          public:
+              void funct()
+              {
                 int c;
                 c=privatedateA;    //error：基类中私有成员在派生类中是不可见的
                 c=protecteddateA;  //ok：基类的保护成员在派生类中为私有成员
                 c=publicdateA;     //ok：基类的公共成员在派生类中为私有成员
-            }
+               }
         };
         //////////////////////////////////////////////////////////////////////////
         class D :protected A   //基类A的派生类D（保护继承）
         {
-        public:
-            void funct()
-            {
-                int d;
-                d=privatedateA;   //error：基类中私有成员在派生类中是不可见的
-                d=protecteddateA; //ok：基类的保护成员在派生类中为保护成员
-                d=publicdateA;    //ok：基类的公共成员在派生类中为保护成员
-            }
-        };
+           public:
+               void funct()
+               {
+                   int d;
+                   d=privatedateA;   //error：基类中私有成员在派生类中是不可见的
+                   d=protecteddateA; //ok：基类的保护成员在派生类中为保护成员
+                   d=publicdateA;    //ok：基类的公共成员在派生类中为保护成员
+               }
+           };
         //////////////////////////////////////////////////////////////////////////
         int main()
         {
