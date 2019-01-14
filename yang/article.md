@@ -146,6 +146,8 @@
             a=objD.protecteddateA; //error：基类的保护成员在派生类中为保护成员，对对象不可见
             a=objD.publicdateA;    //error：基类的公共成员在派生类中为保护成员，对对象不可见
 
-            return 0;  }                                                                                                                                       ```                         
+            return 0;   
+              
+          }                  
  
 * 多态    
