@@ -1,0 +1,16 @@
+栈内存:  1. 是一种连续储存的数据结构，具有先进后出的性质。想要读取栈中的某个元素，就要将其之前的所有元素出栈才能完成。类比羽毛球桶。
+        2. 栈内存存储程序运行时分配的局部变量
+        3. const局部变量也存储在栈内存
+        4. 由程序自动申请分配，回收；程序员无法控制
+        5. 栈内存向地址减小的方向增长
+        
+        #include <iostream>
+        int main(int argc, const char * argv[]) {
+            // insert code here...
+            int i = 10; //变量i储存在栈区中
+            const int i2 = 20;
+            int i3 = 30;
+            std::cout << &i << " " << &i2 << " " << &i3 << std::endl;
+            return 0;
+        }
+        //输出结果0x7ffeefbff5bc 0x7ffeefbff5b8 0x7ffeefbff5b4 内存地址不断减小，且地址是连续的。
